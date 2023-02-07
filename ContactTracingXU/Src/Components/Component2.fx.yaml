@@ -1,0 +1,22 @@
+Component2 As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =1000
+    Width: =2000
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Rectangle1 As rectangle:
+        Height: =1336
+        Width: =640
+        X: =1260
+        ZIndex: =1
+
+    Circle1 As circle:
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =1000
+        Width: =1500
+        X: =-200
+        Y: =
+        ZIndex: =2
+

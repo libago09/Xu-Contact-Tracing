@@ -1,0 +1,9 @@
+[
+  {
+    "AddinConnectorId": "885905f0-cc82-4d48-bcb2-756b0b8a5d13",
+    "AddinId": "6d1f157d-95bf-406d-b65d-cfd3240f724e",
+    "Name": "EXPORTTOCSV",
+    "ServiceKind": "AddinWadl",
+    "Type": "ServiceInfo"
+  }
+]
