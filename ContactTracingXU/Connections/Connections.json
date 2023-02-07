@@ -1,0 +1,128 @@
+{
+  "89db32aa-ec06-4904-96b5-f4926429ceab": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "OneDrive for Business",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1546/1.0.1546.2665/onedriveforbusiness/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_onedriveforbusiness",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "f50049fb-d341-4545-84fd-805249573cf5"
+    ],
+    "id": "89db32aa-ec06-4904-96b5-f4926429ceab"
+  },
+  "8f514fca-6c18-47d5-af07-46aef4afcaa6": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1591/1.0.1591.2961/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://myxueduph.sharepoint.com/sites/ContactTracingApplication": {
+        "dataSources": {
+          "BuildingCodes": {
+            "tableName": "f63099f2-2570-4641-bf6a-5042413005e9"
+          },
+          "userMessages": {
+            "tableName": "d296ff77-1b70-4fa3-9bc9-0f253110c4a8"
+          },
+          "Users_1": {
+            "tableName": "a60cec94-124e-425f-b24a-d7f46c4a0cb6"
+          },
+          "UserScanRoom": {
+            "tableName": "23788dce-eae6-4100-8d29-96f4f9eda621"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Users_1",
+      "UserScanRoom",
+      "userMessages",
+      "BuildingCodes"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "8f514fca-6c18-47d5-af07-46aef4afcaa6"
+  },
+  "e8a54f7c-d151-4dcc-ba35-b6dabfb19df5": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1593/1.0.1593.2980/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "e8a54f7c-d151-4dcc-ba35-b6dabfb19df5"
+  },
+  "f50049fb-d341-4545-84fd-805249573cf5": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-17.southeastasia.logic.azure.com:443/workflows/63f0281b918441f6accc92cda500522e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=pFXdvMbc-XSwz4SoGh87CsoGSOqVH7m__CiXqr5MHVQ",
+      "workflowEndpoint": "/subscriptions/ce4eb7c9-9c8b-4133-9141-bac869f4b0a7/resourceGroups/e2abd29bfb2c4a3f83b121d791618f68-defaulte2abd29bfb2c4a3f83b121d791618f68-env/providers/Microsoft.Logic/workflows/872b1aab-24af-c55b-c634-aa902638d108",
+      "workflowEntityId": "b750c2bf-55e3-ec11-bb3d-000d3a0871cb",
+      "workflowName": "872b1aab-24af-c55b-c634-aa902638d108",
+      "workflowPath": "/subscriptions/ce4eb7c9-9c8b-4133-9141-bac869f4b0a7/resourceGroups/e2abd29bfb2c4a3f83b121d791618f68-defaulte2abd29bfb2c4a3f83b121d791618f68-env/providers/Microsoft.Logic/workflows/872b1aab-24af-c55b-c634-aa902638d108"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "89db32aa-ec06-4904-96b5-f4926429ceab": {
+          "value": "shared_onedriveforbusiness"
+        },
+        "workflowEntityId": {
+          "value": "b750c2bf-55e3-ec11-bb3d-000d3a0871cb"
+        },
+        "workflowName": {
+          "value": "872b1aab-24af-c55b-c634-aa902638d108"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_onedriveforbusiness": {
+          "value": "89db32aa-ec06-4904-96b5-f4926429ceab"
+        },
+        "workflowEntityId": {
+          "value": "b750c2bf-55e3-ec11-bb3d-000d3a0871cb"
+        },
+        "workflowName": {
+          "value": "872b1aab-24af-c55b-c634-aa902638d108"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "EXPORTTOCSV"
+    ],
+    "dependencies": {
+      "shared_onedriveforbusiness": "89db32aa-ec06-4904-96b5-f4926429ceab"
+    },
+    "dependents": [],
+    "id": "f50049fb-d341-4545-84fd-805249573cf5"
+  }
+}

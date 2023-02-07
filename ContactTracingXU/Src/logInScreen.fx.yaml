@@ -1,0 +1,211 @@
+logInScreen As screen:
+
+    Button1 As button:
+        BorderColor: =RGBA(56, 96, 178, 1)
+        Fill: =RGBA(0, 18, 107, 1)
+        Font: =Font.'Lato Light'
+        FontWeight: =FontWeight.Bold
+        Height: =52
+        OnSelect: |
+            =If(
+                !IsBlank(
+                    LookUp(
+                        Users_1,
+                        Email = TextInput1.Text And Password = TextInput1_1.Text,
+                        Title
+                    )
+                ),
+                Set(
+                    myUserEmail,
+                    TextInput1.Text
+                );
+                Set(
+                    myUserPassword,
+                    TextInput1_1.Text
+                );
+                Set(
+                    myUserRole,
+                    LookUp(
+                        Users_1,
+                        Email = TextInput1.Text And Password = TextInput1_1.Text,
+                        Role
+                    )
+                );
+                Set(
+                    myUserName,
+                    LookUp(
+                        Users_1,
+                        Email = TextInput1.Text And Password = TextInput1_1.Text,
+                        'Full Name'
+                    )
+                );
+                Set(
+                    myUserNumber,
+                    LookUp(
+                        Users_1,
+                        Email = TextInput1.Text And Password = TextInput1_1.Text,
+                        'Mobile No.'
+                    )
+                );
+                Navigate(
+                    userScreen_MyQRcode,
+                    ScreenTransition.UnCoverRight,
+                    {UserID: TextInput1.Text}
+                );
+                ,
+                TextInput1.Text = "Security" And TextInput1_1.Text = "1",
+                Navigate(
+                    adminScreen_ScanSecurityOUT,
+                    ScreenTransition.UnCoverRight
+                );
+                Set(
+                    disappearPrompt,
+                    true
+                );
+                ,
+                TextInput1.Text = "Admin" And TextInput1_1.Text = "1",
+                Navigate(
+                    'Admin Screen',
+                    ScreenTransition.UnCoverRight
+                );
+                ,
+                TextInput1.Text = "Admin2" And TextInput1_1.Text = "1",
+                Navigate(
+                    adminScreen_AutoTrack,
+                    ScreenTransition.UnCoverRight
+                );
+                ,
+                IsBlank(
+                    LookUp(
+                        Users_1,
+                        Email = TextInput1.Text And Password = TextInput1_1.Text,
+                        Title
+                    )
+                ),
+                Notify(
+                    "Invalid Password!!! Please Enter a Valid Password",
+                    NotificationType.Error
+                );
+                
+            );
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =17
+        Text: ="Log-in"
+        Width: =106
+        X: =457
+        Y: =669
+        ZIndex: =8
+
+    Group2 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =8
+
+        Component2_3 As Component2_1:
+            Height: =1023
+            Width: =640
+            Y: =72
+
+        Component2_2 As Component2:
+            Height: =1050
+            Width: =640
+            ZIndex: =2
+
+        Label3 As label:
+            Fill: =RGBA(0, 18, 107, 1)
+            Height: =554
+            Size: =21
+            Text: =""
+            Width: =640
+            ZIndex: =3
+
+    Image1 As image:
+        Height: =320
+        Image: =Picture1
+        Width: =320
+        X: =160
+        Y: =117
+        ZIndex: =9
+
+    btnSignIn As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =10
+
+        Label1 As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Lato Light'
+            FontWeight: =FontWeight.Bold
+            Height: =105
+            OnSelect: =Navigate(signUpScreen,Fade)
+            Size: =25
+            Text: ="Sign up"
+            Width: =380
+            X: =77
+            Y: =990
+            ZIndex: =6
+
+        Icon2 As icon.Add:
+            BorderColor: =RGBA(215, 223, 240, 1)
+            Height: =38
+            Icon: =Icon.Add
+            OnSelect: =Navigate(signUpScreen,ScreenTransition.Cover)
+            Width: =42
+            X: =35
+            Y: =1023
+            ZIndex: =7
+
+    inputCredentials As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =10
+
+        TextInput1 As text:
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(0, 18, 107, 1)
+            Default: =""
+            Fill: =RGBA(241, 244, 249, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =51
+            HintText: ="Username"
+            OnSelect: =
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Size: =20
+            Width: =486
+            X: =77
+            Y: =520
+            ZIndex: =4
+
+        TextInput1_1 As text:
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(0, 18, 107, 1)
+            Default: =""
+            Fill: =RGBA(241, 244, 249, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =51
+            HintText: ="Password"
+            Mode: =TextMode.Password
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Size: =20
+            Width: =486
+            X: =77
+            Y: =599
+            ZIndex: =5
+

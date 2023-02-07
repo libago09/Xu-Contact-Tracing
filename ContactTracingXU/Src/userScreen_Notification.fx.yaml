@@ -1,0 +1,533 @@
+userScreen_Notification As screen:
+
+    "'htmlText_HealthCheck-up_5' As htmlViewer":
+        Height: =838
+        HtmlText: |-
+            ="<div style='background-color: rgba(0,0,0,0); box-shadow: 0px 6px 7px 0px rgba(89,87,87,0.85); margin: 18px; width: 590px; height: 790px; border-radius: 15px'></div>"
+        OnSelect: =
+        Width: =640
+        Y: =115
+        ZIndex: =1
+
+    btnBackground_5 As label:
+        Fill: =RGBA(56, 96, 178, 1)
+        Height: =110
+        Size: =21
+        Text: =""
+        Width: =640
+        Y: =1026
+        ZIndex: =2
+
+    "'btnComponents-Scan_5' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =22
+
+        btnScan_5 As button:
+            BorderColor: =RGBA(255, 255, 255, 1)
+            BorderThickness: =3
+            Fill: =RGBA(0, 18, 107, 1)
+            Height: =154
+            HoverBorderColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            PressedBorderColor: =
+            PressedFill: =
+            RadiusBottomLeft: =500
+            RadiusBottomRight: =500
+            RadiusTopLeft: =500
+            RadiusTopRight: =500
+            Size: =24
+            Text: =""
+            Width: =156
+            X: =242
+            Y: =953
+            ZIndex: =3
+
+        Image3_5 As image:
+            Height: =78
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            Image: ='image (4)'
+            PressedBorderColor: =
+            PressedFill: =
+            Width: =55
+            X: =292
+            Y: =985
+            ZIndex: =4
+
+        Label4_17 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =64
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            PressedBorderColor: =
+            PressedFill: =
+            Size: =16
+            Text: ="Scan"
+            Width: =55
+            X: =292
+            Y: =1043
+            ZIndex: =5
+
+        btnScan_Function_2 As button:
+            BorderColor: =RGBA(255, 255, 255, 1)
+            BorderThickness: =3
+            Fill: =RGBA(0, 18, 107, 0)
+            Height: =154
+            HoverBorderColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            OnSelect: =Navigate(userScreen_Scan,ScreenTransition.Fade)
+            PressedBorderColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(0, 18, 107, 0.6)
+            RadiusBottomLeft: =500
+            RadiusBottomRight: =500
+            RadiusTopLeft: =500
+            RadiusTopRight: =500
+            Size: =24
+            Text: =""
+            Width: =156
+            X: =242
+            Y: =953
+            ZIndex: =18
+
+    "Gallery4 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Height: =778
+        Items: =Sort(Filter(userMessages, 'Receiver-Email' = myUserEmail), DateAndTime, SortOrder.Descending )
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =94
+        Width: =592
+        X: =24
+        Y: =143
+        ZIndex: =23
+
+        Image7 As image:
+            Height: =70
+            Image: ='Profile-Male-PNG'
+            OnSelect: =Select(Parent)
+            Width: =70
+            X: =22
+            Y: =11
+            ZIndex: =2
+
+        Title2 As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Lato Light'
+            FontWeight: =FontWeight.Bold
+            Height: =28
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =264
+            X: =96
+            Y: =11
+            ZIndex: =3
+
+        NextArrow2 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            BorderColor: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(255, 255, 255, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FocusedBorderColor: =RGBA(255, 255, 255, 1)
+            FocusedBorderThickness: =0
+            Height: =51
+            HoverBorderColor: =RGBA(255, 255, 255, 1)
+            Icon: =Icon.ArrowRight
+            OnSelect: |-
+                =Set(
+                    getViewMessageType,
+                    ThisItem.MessageType.Value
+                );
+                Set(
+                    getViewMessage,
+                    ThisItem.Message
+                );
+                Set(
+                    getViewSender,
+                    ThisItem.Title
+                );
+                Set(
+                    getViewSenderEmail,
+                    ThisItem.'Sender-Email'
+                );
+                Set(
+                    getViewTime,
+                    ThisItem.DateAndTime
+                );
+                Navigate(
+                    userScreen_viewMessage,
+                    ScreenTransition.Cover
+                )
+            PaddingRight: =3
+            TabIndex: =0
+            Tooltip: =
+            Width: =40
+            X: =538
+            Y: =31
+            ZIndex: =4
+
+        Separator2 As rectangle:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label15 As label:
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =26
+            OnSelect: =Select(Parent)
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: |-
+                ="Message: " & ThisItem.Message 
+            VerticalAlign: =VerticalAlign.Top
+            Width: =308
+            Wrap: =false
+            X: =107
+            Y: =50
+            ZIndex: =6
+
+        Label16 As label:
+            Color: =If(Label16.Text = "SelfReport",RGBA(56, 96, 178, 1),RGBA(127, 178, 57, 1))
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Semibold
+            Height: =20
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.MessageType.Value
+            Width: =133
+            X: =96
+            Y: =30
+            ZIndex: =7
+
+        Label17 As label:
+            Align: =Align.Right
+            Color: =RGBA(0, 16, 96, 1)
+            FontWeight: =FontWeight.Lighter
+            Height: =20
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingRight: =3
+            PaddingTop: =0
+            Size: =11
+            Text: =ThisItem.DateAndTime
+            Width: =178
+            X: =400
+            Y: =11
+            ZIndex: =8
+
+    "'btnComponents-Profile_3' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =23
+
+        btnProfile_3 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =
+            OnSelect: =Navigate(profileScreen);
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =2
+            Y: =1030
+            ZIndex: =6
+
+        Label4_18 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            OnSelect: =Navigate(profileScreen);
+            Size: =10
+            Text: ="Profile"
+            Width: =48
+            X: =36
+            Y: =1100
+            ZIndex: =7
+
+        Icon5_3 As icon.Person:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Icon: =Icon.Person
+            OnSelect: =Navigate(profileScreen);
+            Width: =50
+            X: =35
+            Y: =1050
+            ZIndex: =8
+
+        btnProfile_Function_3 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: =Navigate(profileScreen);
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =2
+            Y: =1030
+            ZIndex: =19
+
+    Label13_1 As label:
+        Color: =RGBA(0, 18, 107, 1)
+        Font: =Font.'Lato Light'
+        FontWeight: =FontWeight.Bold
+        Height: =113
+        Size: =40
+        Text: ="NOTIFICATIONS"
+        Width: =483
+        X: =15
+        Y: =9
+        ZIndex: =24
+
+    "'btnComponents-Notif_3' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =24
+
+        btnNotif_3 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            Height: =106
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            PressedBorderColor: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =122
+            Y: =1030
+            ZIndex: =9
+
+        Label4_19 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Size: =10
+            Text: ="Notification"
+            Width: =83
+            X: =144
+            Y: =1100
+            ZIndex: =10
+
+        Icon6_3 As icon.Message:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =49
+            Icon: =Icon.Mail
+            Width: =49
+            X: =157
+            Y: =1049
+            ZIndex: =11
+
+        btnNotif_Function_3 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(56, 96, 178, 0.6)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =122
+            Y: =1030
+            ZIndex: =20
+
+    "'btnComponents-Report_3' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =25
+
+        btnReport_3 As button:
+            BorderColor: =ColorFade(RGBA(0, 18, 107, 1), -15%)
+            BorderThickness: =0
+            Height: =106
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            OnSelect: |-
+                =If(myUserRole.Value="Student",Notify(
+                            "DISABLED FOR STUDENTS",
+                            NotificationType.Error
+                        ),Navigate(userScreen_Reports,ScreenTransition.Fade))
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =401
+            Y: =1030
+            ZIndex: =14
+
+        Label4_20 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            OnSelect: =Navigate(userScreen_Reports,ScreenTransition.Fade)
+            Size: =10
+            Text: ="Report"
+            Width: =49
+            X: =435
+            Y: =1100
+            ZIndex: =15
+
+        Icon8_3 As icon.Mail:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =52
+            Icon: =Icon.Message
+            OnSelect: =Navigate(userScreen_Reports,ScreenTransition.Fade)
+            Width: =49
+            X: =435
+            Y: =1050
+            ZIndex: =16
+
+        btnReport_Function_3 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: |-
+                =If(myUserRole.Value="Student",Notify(
+                            "DISABLED FOR STUDENTS",
+                            NotificationType.Error
+                        ),Navigate(userScreen_Reports,ScreenTransition.Fade))
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =401
+            Y: =1030
+            ZIndex: =21
+
+    "'btnComponents-MyQRcode_3' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =26
+
+        btnMyQRcode_3 As button:
+            BorderColor: =ColorFade(RGBA(0, 18, 107, 1), -15%)
+            BorderThickness: =0
+            Height: =106
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =523
+            Y: =1030
+            ZIndex: =12
+
+        Label4_21 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =28
+            Size: =10
+            Text: ="My QRcode"
+            Width: =77
+            X: =546
+            Y: =1100
+            ZIndex: =13
+
+        Image5_3 As image:
+            Height: =39
+            Image: ='image (5)'
+            Width: =44
+            X: =563
+            Y: =1054
+            ZIndex: =17
+
+        btnMyQRcode_Function_2 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: =Navigate(userScreen_MyQRcode,ScreenTransition.Fade)
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =523
+            Y: =1030
+            ZIndex: =22
+

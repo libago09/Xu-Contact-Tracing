@@ -1,0 +1,628 @@
+userScreen_Scan As screen:
+    Fill: =RGBA(255, 255, 255, 1)
+    OnVisible: =
+
+    "'htmlText_HealthCheck-up_6' As htmlViewer":
+        Height: =841
+        HtmlText: |-
+            ="<div style='background-color: rgba(0,0,0,0); box-shadow: 0px 6px 7px 0px rgba(89,87,87,0.85); margin: 20px; width: 590px; height: 790px; border-radius: 15px'></div>"
+        OnSelect: =
+        Width: =640
+        Y: =114
+        ZIndex: =1
+
+    btnBackground_1 As label:
+        Fill: =RGBA(56, 96, 178, 1)
+        Height: =110
+        Size: =21
+        Text: =""
+        Width: =640
+        Y: =1026
+        ZIndex: =2
+
+    "Gallery1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Height: =772
+        Items: =Sort(Filter(UserScanRoom, userEmail = myUserEmail),timeIN, Descending)
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =111
+        Width: =564
+        X: =37
+        Y: =150
+        ZIndex: =3
+
+        htmlText_ShowQR_1 As htmlViewer:
+            Height: =63
+            HtmlText: |-
+                ="<div style='background-color: rgba(0,0,0,0); box-shadow: 0px 2px 6px 0px rgba(89,87,87,0.85); margin: 5px; width: 100px; height: 39px; border-radius: 30px'></div>"
+            Visible: =If(IsBlank(ThisItem.timeOut), true, false)
+            Width: =121
+            X: =398
+            Y: =48
+            ZIndex: =1
+
+        Title3 As label:
+            Color: =RGBA(50, 86, 160, 1)
+            Font: =Font.'Lato Light'
+            FontWeight: =FontWeight.Bold
+            Height: =82
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =32
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =328
+            X: =25
+            Y: =30
+            ZIndex: =2
+
+        Label9 As label:
+            Color: =RGBA(128, 128, 128, 1)
+            Height: =70
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =DateAdd(DateTimeValue(Text(ThisItem.timeIN,UTC)),0, Hours)
+            Width: =188
+            X: =371
+            ZIndex: =3
+
+        lbl_TimeOut As label:
+            Color: =RGBA(128, 128, 128, 1)
+            Height: =51
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =DateAdd(DateTimeValue(Text(ThisItem.timeOut,UTC)),0, Hours)
+            Width: =188
+            X: =371
+            Y: =53
+            ZIndex: =4
+
+        Label8 As label:
+            Color: =RGBA(56, 96, 178, 1)
+            Height: =50
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: |-
+                ="IN:"
+            Width: =49
+            X: =336
+            Y: =10
+            ZIndex: =5
+
+        Label8_1 As label:
+            Color: =RGBA(221, 79, 14, 1)
+            Height: =50
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: |-
+                ="OUT:"
+            Width: =70
+            X: =317
+            Y: =53
+            ZIndex: =6
+
+        Button10 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderThickness: =1
+            Color: =RGBA(128, 128, 128, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =39
+            HoverFill: =ColorFade(RGBA(246, 88, 16, 1), -20%)
+            OnSelect: |-
+                =Patch(UserScanRoom, LookUp(UserScanRoom, ID = ThisItem.ID), {
+                            timeOut: Now(),
+                            didTimeOut: true
+                        });
+                Refresh(UserScanRoom);
+            PressedColor: =RGBA(255, 255, 255, 1)
+            RadiusBottomLeft: =25
+            RadiusBottomRight: =25
+            RadiusTopLeft: =25
+            RadiusTopRight: =25
+            Size: =13
+            Text: ="Time-out"
+            Visible: =If(IsBlank(ThisItem.timeOut), true, false)
+            Width: =100
+            X: =408
+            Y: =58
+            ZIndex: =7
+
+    "'btnComponents-Profile_1' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =20
+
+        btnProfile_1 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =2
+            Y: =1030
+            ZIndex: =4
+
+        Label4_6 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Size: =10
+            Text: ="Profile"
+            Width: =48
+            X: =36
+            Y: =1100
+            ZIndex: =5
+
+        Icon5_1 As icon.Person:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Icon: =Icon.Person
+            Width: =50
+            X: =35
+            Y: =1050
+            ZIndex: =6
+
+        btnProfile_Function_1 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =2
+            Y: =1030
+            ZIndex: =16
+
+    "'btnComponents-Notif_1' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =22
+
+        btnNotif_1 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            Height: =106
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            PressedBorderColor: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =122
+            Y: =1030
+            ZIndex: =7
+
+        Label4_7 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Size: =10
+            Text: ="Notification"
+            Width: =83
+            X: =143
+            Y: =1100
+            ZIndex: =8
+
+        Icon6_1 As icon.Message:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Icon: =Icon.Mail
+            Width: =49
+            X: =155
+            Y: =1050
+            ZIndex: =9
+
+        btnNotif_Function_1 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: =Navigate(userScreen_Notification,ScreenTransition.Fade)
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =122
+            Y: =1030
+            ZIndex: =17
+
+    BarcodeScanner1 As barcodeScanner:
+        Fill: |
+            =RGBA(0, 18, 107, 0)
+        Height: =154
+        HoverFill: =RGBA(0, 18, 107, 0.25)
+        OnScan: |
+            =Refresh(UserScanRoom);
+            Set(
+                timeOutRecord,
+                LookUp(
+                    UserScanRoom,
+                    Title = BarcodeScanner1.Value And userEmail = myUserEmail And didTimeOut = false
+                )
+            );
+            Set(
+                existingTimeInFromOtherRoom,
+                LookUp(
+                    UserScanRoom,
+                    Title <> BarcodeScanner1.Value And Title <> "Main Campus" And userEmail = myUserEmail And didTimeOut = false
+                )
+            );
+            If(
+                !IsBlank(timeOutRecord),
+                Patch(
+                    UserScanRoom,
+                    timeOutRecord,
+                    {
+                        timeOut: Now(),
+                        didTimeOut: true
+                    }
+                );
+                ,
+                Set(
+                findBuildingCode,
+                LookUp(
+                    BuildingCodes,
+                    Title = BarcodeScanner1.Value 
+                )
+            );
+                If(
+                    IsBlank(existingTimeInFromOtherRoom) && !IsBlank(findBuildingCode),
+                    Patch(
+                        UserScanRoom,
+                        {
+                            Title: BarcodeScanner1.Value,
+                            userEmail: myUserEmail,
+                            userFullName: myUserName,
+                            timeIN: Now(),
+                            didTimeOut: false
+                        }
+                    ),
+                    UpdateContext({varShowPrompt: true})
+                );
+                
+            );
+            Collect(
+                collectMultiScan,
+                {
+                    BarcodeInfo: BarcodeScanner1.Value,
+                    userEmailScanned: User().Email,
+                    userFullNameScanned: User().FullName,
+                    timeIn: Now()
+                }
+            );
+        PressedFill: =RGBA(0, 18, 107, 0.6)
+        RadiusBottomLeft: =500
+        RadiusBottomRight: =500
+        RadiusTopLeft: =500
+        RadiusTopRight: =500
+        Size: =24
+        Text: =""
+        Width: =156
+        X: =242
+        Y: =955
+        ZIndex: =23
+
+    Label2 As label:
+        Color: =RGBA(0, 18, 107, 1)
+        Font: =Font.'Lato Light'
+        FontWeight: =FontWeight.Bold
+        Height: =101
+        Size: =60
+        Text: ="HISTORY"
+        Width: =379
+        X: =22
+        Y: =26
+        ZIndex: =24
+
+    "'btnComponents-Report_1' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =25
+
+        btnReport_1 As button:
+            BorderColor: =ColorFade(RGBA(0, 18, 107, 1), -15%)
+            BorderThickness: =0
+            Height: =106
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =401
+            Y: =1030
+            ZIndex: =12
+
+        Label4_8 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Size: =10
+            Text: ="Report"
+            Width: =49
+            X: =435
+            Y: =1100
+            ZIndex: =13
+
+        Icon8_1 As icon.Mail:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =52
+            Icon: =Icon.Message
+            Width: =49
+            X: =435
+            Y: =1050
+            ZIndex: =14
+
+        btnReport_Function_1 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: |-
+                =If(myUserRole.Value="Student",Notify(
+                            "ONLY FOR FACULTY",
+                            NotificationType.Error
+                        ),Navigate(userScreen_Reports,ScreenTransition.Fade))
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =401
+            Y: =1030
+            ZIndex: =18
+
+    "'btnComponents-MyQRcode_1' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =26
+
+        btnMyQRcode_1 As button:
+            BorderColor: =ColorFade(RGBA(0, 18, 107, 1), -15%)
+            BorderThickness: =0
+            Height: =106
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =523
+            Y: =1030
+            ZIndex: =10
+
+        Label4_9 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Size: =10
+            Text: ="My QRcode"
+            Width: =77
+            X: =546
+            Y: =1100
+            ZIndex: =11
+
+        Image5_1 As image:
+            Height: =40
+            Image: ='image (5)'
+            Width: =44
+            X: =563
+            Y: =1055
+            ZIndex: =15
+
+        btnMyQRcode_Function_1 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: =Navigate(userScreen_MyQRcode,ScreenTransition.Fade)
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =523
+            Y: =1030
+            ZIndex: =19
+
+    promptGroup As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =28
+
+        Rectangle2 As rectangle:
+            Fill: =RGBA(179, 179, 179, .8)
+            Height: =1136
+            Visible: =varShowPrompt
+            Width: =640
+            ZIndex: =25
+
+        Label11 As label:
+            Align: =Align.Center
+            Color: =RGBA(128, 128, 128, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Semibold
+            Height: =259
+            PaddingTop: =35
+            Size: =28
+            Text: ="Please make sure to timeout your last entry by rescanning QR. You may check your history?"
+            VerticalAlign: =VerticalAlign.Top
+            Visible: =varShowPrompt
+            Width: =640
+            Y: =(App.Height/2)-(Label11.Height/2)
+            ZIndex: =26
+
+        HtmlText1_2 As htmlViewer:
+            Height: =108
+            HtmlText: |-
+                ="<div style='background-color: rgba(0,0,0,0); box-shadow: 0px 3px 6px 0px rgba(89,87,87,0.85); margin: 20px; width: 110px; height: 46px; border-radius: 20px'></div>"
+            Visible: =varShowPrompt
+            Width: =170
+            X: =242
+            Y: =608
+            ZIndex: =27
+
+        Button4 As button:
+            BorderColor: =RGBA(128, 128, 128, 1)
+            BorderThickness: =0
+            Color: =RGBA(128, 128, 128, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Lato Hairline'
+            Height: =46
+            HoverBorderColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(179, 179, 179, 1)
+            OnSelect: |-
+                =UpdateContext({varShowPrompt:false})
+            PressedColor: =RGBA(255, 255, 255, 1)
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Size: =16
+            Text: ="Okay"
+            Visible: =varShowPrompt
+            Width: =111
+            X: =266
+            Y: =633
+            ZIndex: =28
+
+    "'btnComponents-Scan_1' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =30
+
+        btnScan_1 As button:
+            BorderColor: =RGBA(255, 255, 255, 1)
+            BorderThickness: =3
+            Fill: =RGBA(0, 18, 107, 1)
+            Height: =154
+            HoverBorderColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            PressedBorderColor: =
+            PressedFill: =
+            RadiusBottomLeft: =500
+            RadiusBottomRight: =500
+            RadiusTopLeft: =500
+            RadiusTopRight: =500
+            Size: =24
+            Text: =""
+            Width: =156
+            X: =242
+            Y: =953
+            ZIndex: =20
+
+        Image3_1 As image:
+            Height: =78
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            Image: ='image (4)'
+            PressedBorderColor: =
+            PressedFill: =
+            Width: =55
+            X: =292
+            Y: =985
+            ZIndex: =21
+
+        Label4_5 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =64
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            PressedBorderColor: =
+            PressedFill: =
+            Size: =16
+            Text: ="Scan"
+            Width: =55
+            X: =292
+            Y: =1043
+            ZIndex: =22
+

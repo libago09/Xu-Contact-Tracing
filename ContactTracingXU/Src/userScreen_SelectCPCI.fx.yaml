@@ -1,0 +1,121 @@
+userScreen_SelectCPCI As screen:
+    OnVisible: =
+
+    "Gallery3_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =818
+        Items: |-
+            =Filter(
+                Users_1,
+                StartsWith('Full Name',TextInput3_2.Text),
+                StartsWith(Title, TextInput3_3.Text),
+                ISAClassProfessor = true
+            )
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Width: =575
+        X: =32
+        Y: =293
+        ZIndex: =1
+
+        Image6_1 As image:
+            Height: =128
+            Image: ='Profile-Male-PNG'
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Subtitle2_1 As label:
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =21
+            Text: =ThisItem.'Full Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =311
+            X: =159
+            Y: =28
+            ZIndex: =3
+
+        NextArrow1_1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Set(getClassProfessorEmail,ThisItem.Email); Set(getClassProfessorName,ThisItem.'Full Name'); Navigate(userScreen_Reports,ScreenTransition.Fade);
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator1_1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label6_1 As label:
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =27
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.Email
+            Width: =281
+            X: =174
+            Y: =68
+            ZIndex: =6
+
+    Label5_2 As label:
+        Color: =RGBA(0, 18, 107, 1)
+        Font: =Font.'Lato Hairline'
+        FontWeight: =FontWeight.Bold
+        Height: =103
+        Size: =45
+        Text: ="Select Class Instructor"
+        Width: =591
+        X: =24
+        Y: =41
+        ZIndex: =2
+
+    TextInput3_2 As text:
+        Default: =""
+        Font: =Font.'Lato Hairline'
+        FontWeight: =FontWeight.Bold
+        Height: =52
+        HintText: ="Search Name"
+        Size: =21
+        Width: =270
+        X: =32
+        Y: =181
+        ZIndex: =3
+
+    TextInput3_3 As text:
+        Default: =""
+        Font: =Font.'Lato Hairline'
+        FontWeight: =FontWeight.Bold
+        Height: =52
+        HintText: ="Search Email"
+        Size: =21
+        Width: =270
+        X: =337
+        Y: =181
+        ZIndex: =4
+

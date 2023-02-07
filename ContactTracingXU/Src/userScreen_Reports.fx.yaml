@@ -1,0 +1,921 @@
+userScreen_Reports As screen:
+    OnVisible: |-
+        =Set(showThisStudentComponents, false);
+        Set(showThisEmployeeComponents, false);
+        Set(getSuccessfulPromptMessage, "");
+        If(myUserRole.Value="Student",Set(showThisStudentComponents, true),Set(showThisEmployeeComponents, true));
+
+    btnBackground_4 As label:
+        Fill: =RGBA(56, 96, 178, 1)
+        Height: =110
+        Size: =21
+        Text: =""
+        Width: =640
+        Y: =1026
+        ZIndex: =1
+
+    Label13 As label:
+        Color: =RGBA(0, 18, 107, 1)
+        Font: =Font.'Lato Light'
+        FontWeight: =FontWeight.Bold
+        Height: =113
+        Size: =40
+        Text: ="Notify Clinic"
+        Width: =483
+        X: =19
+        Y: =30
+        ZIndex: =22
+
+    "'btnComponents-Scan_4' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =22
+
+        btnScan_4 As button:
+            BorderColor: =RGBA(255, 255, 255, 1)
+            BorderThickness: =3
+            Fill: =RGBA(0, 18, 107, 1)
+            Height: =154
+            HoverBorderColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            PressedBorderColor: =
+            PressedFill: =
+            RadiusBottomLeft: =500
+            RadiusBottomRight: =500
+            RadiusTopLeft: =500
+            RadiusTopRight: =500
+            Size: =24
+            Text: =""
+            Width: =156
+            X: =242
+            Y: =953
+            ZIndex: =2
+
+        Image3_4 As image:
+            Height: =78
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            Image: ='image (4)'
+            PressedBorderColor: =
+            PressedFill: =
+            Width: =55
+            X: =292
+            Y: =985
+            ZIndex: =3
+
+        Label4_12 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =64
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            PressedBorderColor: =
+            PressedFill: =
+            Size: =16
+            Text: ="Scan"
+            Width: =55
+            X: =292
+            Y: =1043
+            ZIndex: =4
+
+        btnScan_Function_1 As button:
+            BorderColor: =RGBA(255, 255, 255, 1)
+            BorderThickness: =3
+            Fill: =RGBA(0, 18, 107, 0)
+            Height: =154
+            HoverBorderColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(0, 18, 107, 0.25)
+            OnSelect: =Navigate(userScreen_Scan,ScreenTransition.Fade)
+            PressedBorderColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(0, 18, 107, 0.6)
+            RadiusBottomLeft: =500
+            RadiusBottomRight: =500
+            RadiusTopLeft: =500
+            RadiusTopRight: =500
+            Size: =24
+            Text: =""
+            Width: =156
+            X: =242
+            Y: =953
+            ZIndex: =17
+
+    "'btnComponents-MyQRcode_2' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =22
+
+        btnMyQRcode_2 As button:
+            BorderColor: =ColorFade(RGBA(0, 18, 107, 1), -15%)
+            BorderThickness: =0
+            Height: =103
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =523
+            Y: =1030
+            ZIndex: =11
+
+        Label4_16 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =28
+            Size: =10
+            Text: ="My QRcode"
+            Width: =77
+            X: =546
+            Y: =1100
+            ZIndex: =12
+
+        Image5_2 As image:
+            Height: =39
+            Image: ='image (5)'
+            Width: =44
+            X: =563
+            Y: =1054
+            ZIndex: =16
+
+        btnReport_QRcode_2 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: =Navigate(userScreen_MyQRcode,ScreenTransition.Fade)
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =523
+            Y: =1030
+            ZIndex: =21
+
+    "'btnComponents-Profile_2' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =23
+
+        btnProfile_2 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =
+            OnSelect: =Navigate(profileScreen);
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =2
+            Y: =1030
+            ZIndex: =5
+
+        Label4_13 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            OnSelect: =Navigate(profileScreen);
+            Size: =10
+            Text: ="Profile"
+            Width: =48
+            X: =36
+            Y: =1100
+            ZIndex: =6
+
+        Icon5_2 As icon.Person:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Icon: =Icon.Person
+            OnSelect: =Navigate(profileScreen);
+            Width: =50
+            X: =35
+            Y: =1050
+            ZIndex: =7
+
+        btnProfile_Function_2 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: =Navigate(profileScreen);
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =2
+            Y: =1030
+            ZIndex: =18
+
+    "'btnComponents-Notif_2' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =24
+
+        btnNotif_2 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            Height: =106
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            PressedBorderColor: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =122
+            Y: =1030
+            ZIndex: =8
+
+        Label4_14 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Size: =10
+            Text: ="Notification"
+            Width: =83
+            X: =143
+            Y: =1100
+            ZIndex: =9
+
+        Icon6_2 As icon.Message:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Icon: =Icon.Mail
+            Width: =49
+            X: =155
+            Y: =1050
+            ZIndex: =10
+
+        btnNotif_Function_2 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(56, 96, 178, 0)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            OnSelect: =Navigate(userScreen_Notification,ScreenTransition.Fade)
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =122
+            Y: =1030
+            ZIndex: =19
+
+    txtInputUserMessage As text:
+        Color: =RGBA(0, 18, 107, 1)
+        Default: =setTextDefaultForMessage
+        Fill: =RGBA(237, 237, 237, 1)
+        Font: =Font.Lato
+        Height: =377
+        Mode: =TextMode.MultiLine
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Size: =21
+        Width: =572
+        X: =33
+        Y: =362
+        ZIndex: =25
+
+    "'btnComponents-Report_2' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =25
+
+        btnReport_2 As button:
+            BorderColor: =ColorFade(RGBA(0, 18, 107, 1), -15%)
+            BorderThickness: =0
+            Height: =106
+            HoverBorderColor: =ColorFade(Self.BorderColor, -10%)
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =404
+            Y: =1030
+            ZIndex: =13
+
+        Label4_15 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Size: =10
+            Text: ="Report"
+            Width: =49
+            X: =438
+            Y: =1101
+            ZIndex: =14
+
+        Icon8_2 As icon.Mail:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =52
+            Icon: =Icon.Message
+            Width: =49
+            X: =438
+            Y: =1051
+            ZIndex: =15
+
+        btnReport_Function_2 As button:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =0
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(56, 96, 178, 0.6)
+            Height: =106
+            HoverBorderColor: =
+            HoverFill: =RGBA(56, 96, 178, 0.25)
+            PressedBorderColor: =RGBA(56, 96, 178, 1)
+            PressedFill: =RGBA(56, 96, 178, 0.6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =117
+            X: =404
+            Y: =1030
+            ZIndex: =20
+
+    Label14_2 As label:
+        Color: =RGBA(0, 18, 107, 1)
+        Font: =Font.'Lato Light'
+        FontWeight: =FontWeight.Bold
+        Height: =36
+        Size: =12
+        Text: ="Message"
+        Width: =277
+        X: =33
+        Y: =334
+        ZIndex: =30
+
+    Checkbox2 As checkbox:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        CheckboxSize: =40
+        Color: =RGBA(0, 18, 107, 1)
+        Font: =Font.'Lato Light'
+        FontWeight: =FontWeight.Bold
+        Height: =61
+        Size: =15
+        Text: ="I agree of the consequences"
+        Width: =565
+        X: =31
+        Y: =740
+        ZIndex: =31
+
+    "'btnComponents-SubmitReport' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =31
+
+        "'htmlText_HealthCheck-up_1' As htmlViewer":
+            Height: =106
+            HtmlText: |-
+                ="<div style='background-color: rgba(0,0,0,0); box-shadow: 0px 3px 6px 0px rgba(89,87,87,0.85); margin: 20px; width: 158px; height: 55px; border-radius: 15px'></div>"
+            OnSelect: =
+            Width: =206
+            X: =418
+            Y: =809
+            ZIndex: =28
+
+        Button6 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderThickness: =0
+            Color: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Lato Light'
+            Height: =58
+            HoverFill: =RGBA(219, 219, 219, 1)
+            OnSelect: |-
+                =If(
+                    Checkbox2.Value = true,
+                    If(
+                        myUserRole.Value = "Employee",
+                        If(
+                            !IsBlank(getUnitHeadName),
+                            Patch(
+                                userMessages,
+                                Defaults(userMessages),
+                                {
+                                    Title: myUserName,
+                                    'Sender-Email': myUserEmail,
+                                    Receiver: getUnitHeadName,
+                                    'Receiver-Email': getUnitHeadEmail,
+                                    Message: Concatenate(
+                                        txtInputUserMessage.Text,
+                                        Char(13) & Char(13) & "Mobile Number:",
+                                        myUserNumber
+                                    ),
+                                    MessageType: {
+                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                        Value: "SelfReport"
+                                    },
+                                    DateAndTime: Now()
+                                }
+                            );
+                            UpdateContext({setTextDefaultForMessage: ""});
+                            Reset(txtInputUserMessage);
+                            Set(
+                                getUnitHeadName,
+                                ""
+                            );
+                            Reset(txtInputUH);
+                        ),
+                        If(
+                            myUserRole.Value = "Student",
+                            If(
+                                !IsBlank(getClassProfessorName) && !IsBlank(getDeanName),
+                                Patch(
+                                    userMessages,
+                                    Defaults(userMessages),
+                                    {
+                                        Title: myUserName,
+                                        'Sender-Email': myUserEmail,
+                                        Receiver: getClassProfessorName,
+                                        'Receiver-Email': getClassProfessorEmail,
+                                        Message: Concatenate(
+                                            txtInputUserMessage.Text,
+                                            Char(13) & Char(13) & "Mobile Number:",
+                                            myUserNumber
+                                        ),
+                                        MessageType: {
+                                            '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                            Value: "SelfReport"
+                                        },
+                                        DateAndTime: Now()
+                                    }
+                                );
+                                Patch(
+                                    userMessages,
+                                    Defaults(userMessages),
+                                    {
+                                        Title: myUserName,
+                                        'Sender-Email': myUserEmail,
+                                        Receiver: getDeanName,
+                                        'Receiver-Email': getDeanEmail,
+                                        Message: Concatenate(
+                                            txtInputUserMessage.Text,
+                                            Char(13) & Char(13) & " Mobile Number:",
+                                            myUserNumber
+                                        ),
+                                        MessageType: {
+                                            '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                            Value: "SelfReport"
+                                        },
+                                        DateAndTime: Now()
+                                    }
+                                );
+                                Patch(
+                                    userMessages,
+                                    Defaults(userMessages),
+                                    {
+                                        Title: myUserName,
+                                        'Sender-Email': myUserEmail,
+                                        Receiver: "Xavier University Clinic",
+                                        'Receiver-Email': "xavieruniversityclinic@xu.edu.ph",
+                                        Message: Concatenate(
+                                            txtInputUserMessage.Text,
+                                            Char(13) & Char(13) & " Mobile Number:",
+                                            myUserNumber
+                                        ),
+                                        MessageType: {
+                                            '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                            Value: "SelfReport"
+                                        },
+                                        DateAndTime: Now()
+                                    }
+                                );
+                                UpdateContext({setTextDefaultForMessage: ""});
+                                Reset(txtInputUserMessage);
+                                Set(
+                                    getClassProfessorName,
+                                    ""
+                                );
+                                Set(
+                                    getDeanName,
+                                    ""
+                                );
+                                Reset(txtInputCollegeDean);
+                                Reset(txtInputCPCI);
+                            )
+                        )
+                    );
+                    UpdateContext({StartTimerPrompt: false});
+                    UpdateContext(
+                        {
+                            promptVisibility: true,
+                            StartTimerPrompt: true
+                        }
+                    );
+                    
+                )
+            PressedBorderColor: =RGBA(166, 166, 166, 1)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(166, 166, 166, 1)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Text: ="Submit Report"
+            Width: =158
+            X: =443
+            Y: =833
+            ZIndex: =29
+
+    "'inputComponents-CollegeDean' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =36
+
+        txtInputCollegeDean As text:
+            Default: =getDeanName
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(237, 237, 237, 1)
+            Font: =Font.Lato
+            Height: =52
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Size: =21
+            Visible: =showThisStudentComponents
+            Width: =452
+            X: =35
+            Y: =173
+            ZIndex: =23
+
+        Label14 As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Lato Light'
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Size: =12
+            Text: ="College Dean"
+            Visible: =showThisStudentComponents
+            Width: =277
+            X: =33
+            Y: =143
+            ZIndex: =26
+
+        "'htmlText_HealthCheck-up_2' As htmlViewer":
+            Height: =71
+            HtmlText: |-
+                ="<div style='background-color: rgba(0,0,0,0); box-shadow: 0px 3px 6px 0px rgba(89,87,87,0.85); margin: 10px; width: 92px; height: 35px; border-radius: 15px'></div>"
+            Visible: =showThisStudentComponents
+            Width: =142
+            X: =498
+            Y: =167
+            ZIndex: =32
+
+        Button6_1 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderThickness: =0
+            Color: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Lato Light'
+            Height: =35
+            HoverFill: =RGBA(219, 219, 219, 1)
+            OnSelect: |
+                =Set(getDeanName, "");
+                Set(getDeanEmail, "");
+                Navigate(
+                    userScreen_SelectDean,
+                    ScreenTransition.Fade
+                );
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(166, 166, 166, 1)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =12
+            Text: ="Find Dean"
+            Visible: =showThisStudentComponents
+            Width: =92
+            X: =513
+            Y: =182
+            ZIndex: =33
+
+    "'inputComponents-CurrentCPCI' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =36
+
+        txtInputCPCI As text:
+            Default: =getClassProfessorName
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(237, 237, 237, 1)
+            Font: =Font.Lato
+            Height: =52
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Size: =21
+            Visible: =showThisStudentComponents
+            Width: =452
+            X: =35
+            Y: =266
+            ZIndex: =24
+
+        Label14_1 As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Lato Light'
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Size: =12
+            Text: ="Current Class Professor/Instructor"
+            Visible: =showThisStudentComponents
+            Width: =277
+            X: =33
+            Y: =238
+            ZIndex: =27
+
+        "'htmlText_HealthCheck-up_3' As htmlViewer":
+            Height: =71
+            HtmlText: |-
+                ="<div style='background-color: rgba(0,0,0,0); box-shadow: 0px 3px 6px 0px rgba(89,87,87,0.85); margin: 10px; width: 92px; height: 35px; border-radius: 15px'></div>"
+            Visible: =showThisStudentComponents
+            Width: =142
+            X: =498
+            Y: =256
+            ZIndex: =34
+
+        Button6_2 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderThickness: =0
+            Color: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Lato Light'
+            Height: =35
+            HoverFill: =RGBA(219, 219, 219, 1)
+            OnSelect: |
+                =Set(getClassProfessorName, "");
+                Set(getClassProfessorEmail, "");
+                Navigate(
+                    userScreen_SelectCPCI,
+                    ScreenTransition.Fade
+                );
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(166, 166, 166, 1)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =12
+            Text: ="Find CP/CI"
+            Visible: =showThisStudentComponents
+            Width: =92
+            X: =513
+            Y: =271
+            ZIndex: =35
+
+    "'inputComponents-CollegeDean_1' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =20
+        ZIndex: =40
+
+        txtInputUH As text:
+            Default: =getUnitHeadName
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(237, 237, 237, 1)
+            Font: =Font.'Lato Hairline'
+            FontWeight: =FontWeight.Bold
+            Height: =52
+            HintText: ="Name"
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Size: =21
+            Visible: =showThisEmployeeComponents
+            Width: =452
+            X: =35
+            Y: =265
+            ZIndex: =36
+
+        Label14_3 As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Lato Light'
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Size: =12
+            Text: ="Unit Head"
+            Visible: =showThisEmployeeComponents
+            Width: =277
+            X: =33
+            Y: =235
+            ZIndex: =37
+
+        "'htmlText_HealthCheck-up_4' As htmlViewer":
+            Height: =71
+            HtmlText: |-
+                ="<div style='background-color: rgba(0,0,0,0); box-shadow: 0px 6px 7px 0px rgba(89,87,87,0.85); margin: 10px; width: 92px; height: 35px; border-radius: 15px'></div>"
+            Visible: =showThisEmployeeComponents
+            Width: =142
+            X: =498
+            Y: =259
+            ZIndex: =38
+
+        Button6_3 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderThickness: =0
+            Color: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Lato Light'
+            Height: =35
+            HoverFill: =RGBA(219, 219, 219, 1)
+            OnSelect: |
+                =Set(getUnitHeadName, "");
+                Set(getUnitHeadEmail, "");
+                Navigate(
+                    userScreen_SelectUnitHead,
+                    ScreenTransition.Fade
+                );
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(166, 166, 166, 1)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =12
+            Text: ="Find UH"
+            Visible: =showThisEmployeeComponents
+            Width: =92
+            X: =513
+            Y: =274
+            ZIndex: =39
+
+    Button8 As button:
+        BorderColor: =RGBA(230, 230, 230, 1)
+        BorderThickness: =1
+        Color: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(54, 176, 75, 1)
+        Font: =Font.Arial
+        FontWeight: =FontWeight.Normal
+        Height: =70
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =24
+        Text: ="Successful!"
+        Visible: =promptVisibility
+        Width: =640
+        Y: =
+        ZIndex: =41
+
+    Timer1 As timer:
+        Duration: =3000
+        Height: =70
+        OnTimerEnd: |-
+            =UpdateContext({promptVisibility:false});
+        OnTimerStart: =
+        Start: =StartTimerPrompt
+        Visible: =false
+        Width: =280
+        X: =19
+        Y: =878
+        ZIndex: =42
+
+    Group1_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =45
+
+        Button15_1 As button:
+            BorderColor: =RGBA(230, 230, 230, 1)
+            Color: =RGBA(0, 0, 0, 0)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(0, 18, 107, 1)
+            DisabledFill: =RGBA(255, 255, 255, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(0, 18, 107, 1)
+            Height: =50
+            RadiusBottomLeft: =100
+            RadiusBottomRight: =100
+            RadiusTopLeft: =100
+            RadiusTopRight: =100
+            Size: =24
+            Text: =""
+            Width: =50
+            X: =565
+            Y: =952
+            ZIndex: =43
+
+        Icon1_1 As icon.Add:
+            Color: =RGBA(230, 230, 230, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            Height: =35
+            Icon: =Icon.QuestionMark
+            Width: =35
+            X: =572
+            Y: =960
+            ZIndex: =44
+
+    Group3_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =48
+
+        "'htmlText_HealthCheck-up_17' As htmlViewer":
+            Height: =383
+            HtmlText: |-
+                ="<div style='background-color: rgba(56, 96, 178, 1); box-shadow: 0px 3px 6px 0px rgba(89,87,87,0.85); margin: 20px; width: 550px; height: 300px; border-radius: 15px'></div>"
+            OnSelect: =
+            Width: =612
+            X: =17
+            Y: =342
+            ZIndex: =45
+
+        Label24_1 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            Font: =Font.'Lato Light'
+            FontWeight: =FontWeight.Semibold
+            Height: =300
+            PaddingLeft: =10
+            PaddingTop: =30
+            Size: =24
+            Text: ="Possible covid patient can be reported through the app. After filling up the required inputs, your phone number will  automatically be sent inside the message. The clinic will be notified after pressing the submit report."
+            VerticalAlign: =VerticalAlign.Top
+            Width: =550
+            X: =43
+            Y: =365
+            ZIndex: =46
+
+        Icon4_1 As icon.CancelBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(227, 234, 243, 1)
+            DisabledBorderColor: =RGBA(179, 179, 179, 1)
+            Height: =37
+            Icon: =Icon.CancelBadge
+            Width: =35
+            X: =560
+            Y: =365
+            ZIndex: =47
+
